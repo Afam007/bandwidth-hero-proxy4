@@ -8,6 +8,18 @@ exports.handler = async (e, t) => {
     { jpeg: s, bw: o, l: a } = e.queryStringParameters;
   if (!r)
     return { statusCode: 200, body: "Bandwidth Hero Data Compression Service" };
+  
+  if (r.includes("?")) {
+
+  for (let key in e.queryStringParameters) {
+  
+  if (key != 'url' && key != 'jpg' && key != 'l' && key != 'bw') {
+    
+    r += '&' + key + '=' + e.queryStringParameters[key];
+  }
+  
+  }
+  }
   try {
     r = JSON.parse(r);
   } catch {}
